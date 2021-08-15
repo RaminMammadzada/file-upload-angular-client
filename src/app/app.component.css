@@ -1,0 +1,35 @@
+.main-container {
+    display: flex;
+	flex-direction: row;
+}
+
+.upload-form {
+    width: 700px;
+    border: 1px solid rgb(206, 195, 195);;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+article section h1 {
+    text-align: center;
+}
+
+.files {
+    width: 900px;
+    border: 1px solid rgb(206, 195, 195);;
+    margin: 10px auto;
+    padding: 10px;
+    box-shadow: 1px 1px 1px gray;
+}
+
+.table-border {
+  border: 0.15rem;
+  border-style: dashed;
+}
+
+.permitted-file-formats {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
