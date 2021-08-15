@@ -1,27 +1,59 @@
-# UploadFilesClient
+## Screenshot
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
+![screenshot](./docs/images/screenshot.png)
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Live demo
 
-## Code scaffolding
+- [Live demo in Heroku](https://spacex-react-redux.herokuapp.com)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Video presentation
 
-## Build
+  - https://www.loom.com/share/295838881c314ce4981503283514a5ae
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  - https://www.loom.com/share/228f1dc9eb9b44dba40c2c4c6854810e
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Built with the following tech stack
 
-## Running end-to-end tests
+- [Angular](http://angular.io/)
+- [angular-cli](https://github.com/angular/angular-cli)
+- [npm](https://www.npmjs.com/)
+- [ES6](http://es6-features.org/)
+- [Jest](https://jestjs.io/)
+- ESLint
+  - eslint-config-airbnb
+  - eslint-plugin-jsx-a11y
+  - eslint-plugin-react
+  - eslint-plugin-react-hooks
+- Stylelint
+  - stylelint-config-standard
+  - stylelint-csstree-validator
+- Pure CSS
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Further help
+### Setup
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Clone the repo by typing
+- Run `npm install`
+- Change server IP address with your own server IP in the src/environment/environment.ts file
+- Run `ng serve -o
+- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+### Unit tests
+
+Clone the repo by typing
+
+```
+npm run test
+
+```
+
+## Author
+
+👤 **Ramin Mammadzada**
+
+- Github: [@raminmammadzada](https://github.com/raminmammadzada)
+- Twitter: [@raminmammadzada](https://twitter.com/raminmammadzada)
+- Linkedin: [Ramin Mammadzada](https://www.linkedin.com/in/raminmammadzada/)
