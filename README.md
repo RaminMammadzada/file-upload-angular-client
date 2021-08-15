@@ -6,7 +6,7 @@
 - Run `npm install`
 - Change server IP address with your own server IP in the src/environment/environment.ts file
 - Run `ng serve -o
-- Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
 
 ## Built with the following tech stack

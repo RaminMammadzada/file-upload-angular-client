@@ -13,10 +13,6 @@
     <h5>Permitted max file size: <span>{{bytesToSize(fileSizeLimit)}}</span></h5>
 
     <form>
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Enter file name" [(ngModel)]="name">
-      </div>
       <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
     </form>
   </section>
@@ -30,21 +26,17 @@
         <thead>
           <tr>
             <th scope="col">Preview</th>
-            <th scope="col">Name</th>
             <th scope="col">File name</th>
             <th scope="col">File size</th>
             <th scope="col">Upload date</th>
-            <th scope="col">File type</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let file of files">
             <td *ngIf="type === file.fileType"><img [src]="createImgPath(file.filePath)" alt="uploaded file" style="width:60px; height:60px;"></td>
-            <td *ngIf="type === file.fileType">{{file.name}}</td>
             <td *ngIf="type === file.fileType">{{file.fileName.slice(0,5) + "...." + file.fileName.slice(-8)}}</td>
             <td *ngIf="type === file.fileType">{{bytesToSize(file.fileSize)}}</td>
             <td *ngIf="type === file.fileType">{{file.uploadDate}}</td>
-            <td *ngIf="type === file.fileType">{{file.fileType}}</td>
           </tr>
         </tbody>
       </table>

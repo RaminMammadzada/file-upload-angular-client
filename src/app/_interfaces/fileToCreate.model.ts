@@ -1,5 +1,4 @@
 export interface FileToCreate {
-    name: string,
     filePath: string,
     fileSize: number,
     fileName: string,

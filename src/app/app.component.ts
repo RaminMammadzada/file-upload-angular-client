@@ -12,7 +12,6 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public name: string;
   public fileSize: number;
   public fileName: string;
   public fileType: string;
@@ -35,7 +34,6 @@ export class AppComponent implements OnInit {
 
   public createFileRow = () => {
     this.file = {
-      name: this.name,
       filePath: this.response.filePath,
       fileSize: this.response.fileSize,
       fileName: this.response.fileName,
@@ -60,7 +58,6 @@ export class AppComponent implements OnInit {
   }
 
   public emptyInput = () => {
-    this.name = '';
     this.fileSize = 0;
     this.fileName = '';
     this.fileType = '';
