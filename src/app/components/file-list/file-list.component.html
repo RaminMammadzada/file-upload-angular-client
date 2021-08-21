@@ -1,5 +1,20 @@
-<div class="row">
-  <div *ngFor="let fileType of ALLOWED_FILE_TYPES | async" class="col-2">
-    <app-file-table [fileType]="fileType"></app-file-table>
+<div class="row" *ngIf="ALLOWED_FILE_TYPES.length > 0">
+  <div *ngFor="let fileType of ALLOWED_FILE_TYPES" class="mx-4">
+    <app-file-table
+      [fileType]="fileType">
+      [files]="files"
+    </app-file-table>
   </div>
+
+  <!-- <div class="row" *ngIf="ALLOWED_FILE_TYPES.length > 0">
+    <div *ngFor="let fileType of ALLOWED_FILE_TYPES" class="mx-4">
+      <app-file-table
+        [files]="filesHashmap[fileType]"
+        [fileType]="fileType">
+      </app-file-table>
+    </div> -->
+
+  <!-- <tr *ngFor="let c of content">
+    <td *ngFor="let key of c | keys">{{key}}: {{c[key]}}</td>
+  </tr> -->
 </div>

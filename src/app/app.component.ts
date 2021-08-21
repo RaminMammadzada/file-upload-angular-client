@@ -16,11 +16,12 @@ export class AppComponent implements OnInit {
   public fileName: string;
   public fileType: string;
   public file: FileToCreate;
-  public files: File[] = [];
   public response: {filePath: '', fileSize: 0, fileName: '', fileType: ''};
   public bytesToSize;
   public allowedFileTypes;
   public fileSizeLimit;
+
+  public files: File[] = [];
 
   constructor(private http: HttpClient){
     this.bytesToSize = bytesToSize;
@@ -29,55 +30,56 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getFiles();
+    this.loadFiles();
   }
 
-  public createFileRow = () => {
-    this.file = {
-      filePath: this.response.filePath,
-      fileSize: this.response.fileSize,
-      fileName: this.response.fileName,
-      fileType: this.response.fileType,
-      uploadDate: new Date()
-    }
+  // public createFileRow = () => {
+  //   this.file = {
+  //     filePath: this.response.filePath,
+  //     fileSize: this.response.fileSize,
+  //     fileName: this.response.fileName,
+  //     fileType: this.response.fileType,
+  //     uploadDate: new Date()
+  //   }
 
-    console.log("this.file: ", this.file);
+  //   console.log("this.file: ", this.file);
 
-    this.http.post(environment.apiUrl + 'api/fileItems', this.file)
-    .subscribe(res => {
-      this.getFiles();
+  //   this.http.post(environment.apiUrl + 'api/fileItems', this.file)
+  //   .subscribe(res => {
+  //     this.getFiles();
 
-    });
-  }
+  //   });
+  // }
 
-  private getFiles = () => {
+  private loadFiles = () => {
+    console.log("loading files...")
     this.http.get(environment.apiUrl + 'api/fileItems')
     .subscribe(res => {
       this.files = res as File[];
     });
   }
 
-  public emptyInput = () => {
-    this.fileSize = 0;
-    this.fileName = '';
-    this.fileType = '';
-  }
+  // public emptyInput = () => {
+  //   this.fileSize = 0;
+  //   this.fileName = '';
+  //   this.fileType = '';
+  // }
 
-  public uploadFinished = (event) => {
-    console.log("Event: ", event);
-    this.response = {
-      filePath: event.filePath,
-      fileSize: event.file.length,
-      fileName: event.file.fileName,
-      fileType: event.file.contentType.split("/")[1]
-    };
-    console.log("this.response: ", this.response);
+  // public uploadFinished = (event) => {
+  //   console.log("Event: ", event);
+  //   this.response = {
+  //     filePath: event.filePath,
+  //     fileSize: event.file.length,
+  //     fileName: event.file.fileName,
+  //     fileType: event.file.contentType.split("/")[1]
+  //   };
+  //   console.log("this.response: ", this.response);
 
-    this.createFileRow()
-    this.emptyInput();
-  }
+  //   this.createFileRow()
+  //   this.emptyInput();
+  // }
 
-  public createImgPath = (serverPath: string) => {
-    return `${environment.apiUrl}${serverPath}`;
-  }
+  // public createImgPath = (serverPath: string) => {
+  //   return `${environment.apiUrl}${serverPath}`;
+  // }
 }

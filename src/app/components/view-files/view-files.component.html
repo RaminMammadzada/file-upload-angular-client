@@ -22,4 +22,6 @@
   </table>
 </div> -->
 
-<app-file-list></app-file-list>
+
+<h1>{{files.length}}</h1>
+<app-file-list [files]="files" *ngIf="files.length > 0"></app-file-list>

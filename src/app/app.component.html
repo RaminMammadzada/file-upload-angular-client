@@ -1,10 +1,10 @@
 <article class="container container-fluid main-container">
   <section class="upload-form">
-    <app-upload-files></app-upload-files>
+    <app-upload-files [files]="files"  *ngIf="files.length > 0"></app-upload-files>
   </section>
 
   <section class="view-files">
-    <app-view-files></app-view-files>
+    <app-view-files [files]="files"  *ngIf="files.length > 0"></app-view-files>
   </section>
 </article>
 
