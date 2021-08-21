@@ -43,7 +43,7 @@ export class AppComponent implements OnInit {
 
     console.log("this.file: ", this.file);
 
-    this.http.post(environment.apiUrl + 'api/files', this.file)
+    this.http.post(environment.apiUrl + 'api/fileItems', this.file)
     .subscribe(res => {
       this.getFiles();
 
@@ -51,7 +51,7 @@ export class AppComponent implements OnInit {
   }
 
   private getFiles = () => {
-    this.http.get(environment.apiUrl + 'api/files')
+    this.http.get(environment.apiUrl + 'api/fileItems')
     .subscribe(res => {
       this.files = res as File[];
     });

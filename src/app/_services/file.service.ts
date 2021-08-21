@@ -15,7 +15,7 @@ export class FileService {
 
   getAllFiles(): Observable<File[]> {
     if (this.files.length > 0) return of(this.files);
-    return this.http.get<File[]>(this.baseUrl + 'files').pipe(
+    return this.http.get<File[]>(this.baseUrl + 'fileItems').pipe(
       map(files => {
         this.files = files;
         return files;
@@ -25,7 +25,7 @@ export class FileService {
 
   getFilesByType(type: string): Observable<File[]> {
     if (this.files.length > 0) return of(this.files);
-    return this.http.get<File[]>(this.baseUrl + 'files').pipe(
+    return this.http.get<File[]>(this.baseUrl + 'filesItems').pipe(
       map(files => {
         const currentSelectedFiles = files.filter(file => file.type === type);
         this.files = currentSelectedFiles;
