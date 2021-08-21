@@ -1,46 +1,10 @@
 <article class="container container-fluid main-container">
   <section class="upload-form">
-    <h1>Upload Area</h1>
-
-    <h5>Permitted file types: </h5>
-
-    <div class="permitted-file-formats">
-      <div *ngFor="let type of allowedFileTypes">
-        <span class="file-type">{{type + ","}} &nbsp;</span>
-      </div>
-    </div>
-
-    <h5>Permitted max file size: <span>{{bytesToSize(fileSizeLimit)}}</span></h5>
-
-    <form>
-      <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
-    </form>
+    <app-upload-files></app-upload-files>
   </section>
 
-  <section class="files">
-    <h1>View Area</h1>
-
-    <div *ngFor="let type of allowedFileTypes">
-      <h5 class="file-type">{{"Table for " + type.toUpperCase() + " type files:"}}</h5>
-      <table class="table table-striped table-border">
-        <thead>
-          <tr>
-            <th scope="col">Preview</th>
-            <th scope="col">File name</th>
-            <th scope="col">File size</th>
-            <th scope="col">Upload date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let file of files">
-            <td *ngIf="type === file.fileType"><img [src]="createImgPath(file.filePath)" alt="uploaded file" style="width:60px; height:60px;"></td>
-            <td *ngIf="type === file.fileType">{{file.fileName.slice(0,5) + "...." + file.fileName.slice(-8)}}</td>
-            <td *ngIf="type === file.fileType">{{bytesToSize(file.fileSize)}}</td>
-            <td *ngIf="type === file.fileType">{{file.uploadDate}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <section class="view-files">
+    <app-view-files></app-view-files>
   </section>
 </article>
 

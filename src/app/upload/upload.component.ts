@@ -53,7 +53,7 @@ export class UploadComponent implements OnInit {
     }
 
     // this.http.post('https://localhost:5001/api/upload', formData, {reportProgress: true, observe: 'events'})
-    this.http.post(environment.apiURL + 'api/upload', formData, {reportProgress: true, observe: 'events'})
+    this.http.post(environment.apiUrl + 'api/upload', formData, {reportProgress: true, observe: 'events'})
       .subscribe( (event) => {
         if (event.type === HttpEventType.UploadProgress)
           this.progress = Math.round(100 * event.loaded / event.total);

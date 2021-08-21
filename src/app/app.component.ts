@@ -1,5 +1,5 @@
-import { FileToCreate } from './_interfaces/fileToCreate.model';
-import { User } from './_interfaces/file.model';
+import { FileToCreate } from './_models/fileToCreate.model';
+import { File } from './_models/file.model';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import bytesToSize from './helpers/bytesToSize';
@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.getUsers();
+    this.getFiles();
   }
 
   public createFileRow = () => {
@@ -43,15 +43,15 @@ export class AppComponent implements OnInit {
 
     console.log("this.file: ", this.file);
 
-    this.http.post(environment.apiURL + 'api/files', this.file)
+    this.http.post(environment.apiUrl + 'api/files', this.file)
     .subscribe(res => {
-      this.getUsers();
+      this.getFiles();
 
     });
   }
 
-  private getUsers = () => {
-    this.http.get(environment.apiURL + 'api/files')
+  private getFiles = () => {
+    this.http.get(environment.apiUrl + 'api/files')
     .subscribe(res => {
       this.files = res as File[];
     });
@@ -78,6 +78,6 @@ export class AppComponent implements OnInit {
   }
 
   public createImgPath = (serverPath: string) => {
-    return `${environment.apiURL}${serverPath}`;
+    return `${environment.apiUrl}${serverPath}`;
   }
 }
