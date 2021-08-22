@@ -12,7 +12,7 @@ import { ALLOWED_FILE_TYPES } from 'src/app/staticData';
   styleUrls: ['./upload-files.component.css']
 })
 export class UploadFilesComponent implements OnInit {
-  @Input() files: File[];
+  // @Input() files: File[];
   public allowedFileTypes: string[];
   public bytesToSize;
   public fileSizeLimit;
@@ -21,9 +21,11 @@ export class UploadFilesComponent implements OnInit {
   public hasBaseDropzoneOver = false;
   public baseUrl = environment.apiUrl;
 
-  @Output() subscribe = new EventEmitter();
+  @Output() public emitter = new EventEmitter();
 
-  constructor(private fileService: FileService, private toastr: ToastrService) {
+  constructor(
+    private fileService: FileService,
+    private toastr: ToastrService) {
     this.allowedFileTypes = ALLOWED_FILE_TYPES;
   }
 
@@ -63,11 +65,11 @@ export class UploadFilesComponent implements OnInit {
           uploadDate: new Date(),
         }
         console.log(file);
-        this.files.push(file);
+        // this.files.push(file);
         this.fileService.postFile(file);
         this.toastr.success(`${file.fileName} is uploaded successfully!`);
 
-        this.subscribe.emit(this.files);
+        this.emitter.emit("files updated");
       }
     }
 

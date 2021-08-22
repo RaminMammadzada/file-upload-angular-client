@@ -1,6 +1,6 @@
 import { FileToCreate } from './_models/fileToCreate.model';
 import { File } from './_models/file.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import bytesToSize from './helpers/bytesToSize';
 import {FILE_SIZE_LIMIT, ALLOWED_FILE_TYPES} from './staticData';
@@ -53,6 +53,14 @@ export class AppComponent implements OnInit {
 
   private loadFiles = () => {
     console.log("loading files...")
+    this.http.get(environment.apiUrl + 'api/fileItems')
+    .subscribe(res => {
+      this.files = res as File[];
+    });
+  }
+
+  public updateFiles = (event) => {
+    console.log("loading files... after update")
     this.http.get(environment.apiUrl + 'api/fileItems')
     .subscribe(res => {
       this.files = res as File[];

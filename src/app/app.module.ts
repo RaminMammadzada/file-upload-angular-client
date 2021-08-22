@@ -8,8 +8,6 @@ import { AppComponent } from './app.component';
 import { UploadComponent } from './upload/upload.component';
 import { UploadFilesComponent } from './components/upload-files/upload-files.component';
 import { ViewFilesComponent } from './components/view-files/view-files.component';
-import { FileListComponent } from './components/file-list/file-list.component';
-import { FileTableComponent } from './components/file-table/file-table.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +15,6 @@ import { FileTableComponent } from './components/file-table/file-table.component
     UploadComponent,
     UploadFilesComponent,
     ViewFilesComponent,
-    FileListComponent,
-    FileTableComponent
   ],
   imports: [
     BrowserModule,
