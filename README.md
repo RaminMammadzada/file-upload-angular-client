@@ -1,6 +1,6 @@
 ### Simple File Uploader with Angular 
 
-This is frontend application of the home task for the company Flying Donkey. 
+This is a frontend application of the home task for the company Flying Donkey. 
 
 The tasks that are needed to be done:
 
