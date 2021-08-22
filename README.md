@@ -2,19 +2,19 @@
 
 This is frontend application of the home task for the company Flying Donkey. 
 
-The following tasks are done:
+The tasks that are needed to be done:
 
-[x] Upload area - single for all files. Validation for invalid data should present.
+- [x] Upload area - single for all files. Validation for invalid data should present.
 
-[x] View area consists of tables - one table per permitted file type. Each table must reflect: file name, file size, upload date.
+- [x] View area consists of tables - one table per permitted file type. Each table must reflect: file name, file size, upload date.
 
-[ ] Keep in mind that the number of files can be unlimited.
+- [ ] Keep in mind that the number of files can be unlimited.
 
-[x] Add at least two unit tests for the front-end. Tests must have positive and negative scenarios. Default tests added by angular cli will be ignored during the task evaluation.
+- [x] Add at least two unit tests for the front-end. Tests must have positive and negative scenarios. Default tests added by angular cli will be ignored during the task evaluation.
 
-[x] The page should be as generic/reusable as possible
+- [x] The page should be as generic/reusable as possible
 
-[x] UI must have layered architecture, code must follow common style guides and development principles.
+- [x] UI must have layered architecture, code must follow common style guides and development principles.
 
 
 ### Setup
