@@ -1,22 +1,20 @@
 <h1>Upload Area</h1>
 
 <h5>Permitted file types: </h5>
-<div class="d-flex flex-row">
+<div class="d-flex flex-row ml-2">
   <div *ngFor="let type of allowedFileTypes">
     <span class="file-type">{{type + ","}} &nbsp;</span>
   </div>
 </div>
 
-<!--<h5>Permitted max file size: <span>{{bytesToSize(fileSizeLimit)}}</span></h5>
-<form>
-  <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
-</form>
--->
+<div class="mt-2 d-flex flex-row align-items-baseline">
+  <h5>File size limit: </h5>
+  <span class="ml-2">{{bytesToSize(fileSizeLimit)}}</span>
+</div>
 
+<div class="col mt-3">
 
-<div class="row mt-3">
-
-  <div class="col-md-3">
+  <div class="row-md-9">
 
       <h3>Add Files</h3>
 
@@ -30,13 +28,13 @@
       </div>
 
       Multiple
-      <input type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
+      <input class="my-2" type="file" ng2FileSelect [uploader]="uploader" multiple  /><br/>
 
       Single
-      <input type="file" ng2FileSelect [uploader]="uploader" />
+      <input class="my-2" type="file" ng2FileSelect [uploader]="uploader" />
   </div>
 
-  <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+  <div class="row-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
 
       <h3>Upload queue</h3>
       <p>Queue length: {{ uploader?.queue?.length }}</p>
@@ -50,8 +48,8 @@
           </thead>
           <tbody>
           <tr *ngFor="let item of uploader.queue">
-              <td><strong>{{ item?.file?.name }}</strong></td>
-              <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+              <td><strong>{{ item?.file?.name.slice(0,8) + "...." + item?.file?.name.slice(-8) }}</strong></td>
+              <td *ngIf="uploader.options.isHTML5" nowrap>{{ bytesToSize(item?.file?.size) }}</td>
           </tr>
           </tbody>
       </table>
@@ -59,7 +57,7 @@
       <div>
           <div>
               Queue progress:
-              <div class="progress" style="">
+              <div class="progress my-3">
                   <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
               </div>
           </div>
@@ -67,7 +65,7 @@
                   (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
               <span class="fa fa-upload"></span> Upload all
           </button>
-          <button type="button" class="btn btn-warning btn-s"
+          <button type="button" class="btn btn-warning btn-s mx-2"
                   (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
               <span class="fa fa-ban"></span> Cancel all
           </button>

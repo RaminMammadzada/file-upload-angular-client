@@ -46,58 +46,9 @@ export class FileService {
   public postFile = (file: File): void => {
     this.http.post(environment.apiUrl + 'api/fileItems', file)
         .subscribe(res => {
-          console.log("This is the response after post file service method: ", res);
+          res
         }
     );
-  }
-
-  // this method is useless now
-  public uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-        // formData.append('file', fileToUpload);
-    // formData.append('fileSize', fileToUpload, fileToUpload.size.toString());
-    console.log("fileToUpload: ", fileToUpload);
-    // console.log("Form data: ", formData);
-
-    // if ( !this.isFileTypeAllowed(fileToUpload.type.split("/")[1]) ) {
-
-    //   setTimeout(() => {
-    //     this.message = '';
-    //   }, 2000);
-    //   this.message = 'This file type is not allowed!';
-
-    //   return;
-    // }
-
-    // if ( this.isSizeLimitExceeded(fileToUpload.size) ) {
-
-    //   setTimeout(() => {
-    //     this.message = '';
-    //   }, 2000);
-    //   this.message = 'Size limit exceeded!';
-    //   return;
-    // }
-
-    // this.http.post('https://localhost:5001/api/upload', formData, {reportProgress: true, observe: 'events'})
-    this.http.post(environment.apiUrl + 'api/upload', formData, {reportProgress: true, observe: 'events'})
-      .subscribe( (event) => {
-        if (event.type === HttpEventType.UploadProgress)
-          this.progress = Math.round(100 * event.loaded / event.total);
-        else if (event.type === HttpEventType.Response) {
-          this.onUploadFinished.emit(event.body);
-        }
-
-        setTimeout(() => {
-          this.message = '';
-          this.progress = 0;
-        }, 2000);
-        this.message = 'Upload success'
-      });
   }
 
   public isSizeLimitExceeded(fileSize) {

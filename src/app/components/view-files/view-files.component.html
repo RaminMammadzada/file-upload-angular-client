@@ -14,6 +14,7 @@
         </tr>
       </thead>
       <tbody>
+        <h4 *ngIf="files.length === 0">no data</h4>
         <tr *ngFor="let file of files">
           <td *ngIf="file.fileType === fileType"><img [src]="createFilePath(file.filePath)" alt="uploaded file" style="width:60px; height:60px;"></td>
           <td *ngIf="file.fileType === fileType">{{file.fileName.slice(0,5) + "...." + file.fileName.slice(-8)}}</td>
