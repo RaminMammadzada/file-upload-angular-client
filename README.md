@@ -21,14 +21,13 @@ The tasks that are needed to be done:
 
 - Clone the repo.
 - Run `npm install`
-- Run `ng serve -o
+- Run `ng serve -o`
 - Run the server by cloning [this project](https://github.com/RaminMammadzada/file-upload-dotnet-api) in your local machine.
 - Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
 
 ### Test
 
-- Clone the repo.
 - Run `ng test`
 
 
