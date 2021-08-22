@@ -1,14 +1,13 @@
 <h1>Upload Area</h1>
 
-<!-- <h5>Permitted file types: </h5>
-
-<div class="permitted-file-formats">
+<h5>Permitted file types: </h5>
+<div class="d-flex flex-row">
   <div *ngFor="let type of allowedFileTypes">
     <span class="file-type">{{type + ","}} &nbsp;</span>
   </div>
 </div>
 
-<h5>Permitted max file size: <span>{{bytesToSize(fileSizeLimit)}}</span></h5>
+<!--<h5>Permitted max file size: <span>{{bytesToSize(fileSizeLimit)}}</span></h5>
 <form>
   <app-upload (onUploadFinished)="uploadFinished($event)"></app-upload>
 </form>

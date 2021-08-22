@@ -1,0 +1,17 @@
+img.img-thumbnail {
+  height: 100p;
+  min-width: 100px !important;
+  margin-bottom: 2px;
+}
+
+.nv-file-over {
+  border: dotted 3px rgb(80, 90, 90);
+}
+
+input[type=file] {
+  color: transparent;
+}
+
+.bg-faded {
+  background-color: rgb(231, 231, 231) !important;
+}

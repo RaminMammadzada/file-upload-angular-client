@@ -3,6 +3,8 @@ import { Component, OnInit, Input, ChangeDetectorRef, Output, EventEmitter } fro
 import { environment } from './../../../environments/environment';
 import { FileUploader } from 'ng2-file-upload';
 import { File } from 'src/app/_models/file.model';
+import { ToastrService } from 'ngx-toastr';
+import { ALLOWED_FILE_TYPES } from 'src/app/staticData';
 
 @Component({
   selector: 'app-upload-files',
@@ -11,7 +13,7 @@ import { File } from 'src/app/_models/file.model';
 })
 export class UploadFilesComponent implements OnInit {
   @Input() files: File[];
-  public allowedFileTypes: [];
+  public allowedFileTypes: string[];
   public bytesToSize;
   public fileSizeLimit;
 
@@ -21,7 +23,9 @@ export class UploadFilesComponent implements OnInit {
 
   @Output() subscribe = new EventEmitter();
 
-  constructor(private fileService: FileService) { }
+  constructor(private fileService: FileService, private toastr: ToastrService) {
+    this.allowedFileTypes = ALLOWED_FILE_TYPES;
+  }
 
   ngOnInit(): void {
     this.intiializeUploader();
@@ -41,8 +45,7 @@ export class UploadFilesComponent implements OnInit {
       isHTML5: true,
       // allowedFileType: ['image'],
       removeAfterUpload: true,
-      autoUpload: false,
-      maxFileSize: 10 * 1024 * 1024
+      autoUpload: false
     });
 
     this.uploader.onAfterAddingFile = (file) => {
@@ -62,9 +65,17 @@ export class UploadFilesComponent implements OnInit {
         console.log(file);
         this.files.push(file);
         this.fileService.postFile(file);
+        this.toastr.success(`${file.fileName} is uploaded successfully!`);
 
         this.subscribe.emit(this.files);
       }
+    }
+
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+
+      console.log("response: ", response);
+      this.toastr.error(response)
+
     }
   }
 }
