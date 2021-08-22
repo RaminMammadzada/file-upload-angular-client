@@ -65,7 +65,7 @@ export class UploadFilesComponent implements OnInit {
           fileType: responseObj.file.contentType.split("/")[1],
           uploadDate: new Date(),
         }
-        this.fileService.postFile(file);
+        this.fileService.postFile(file).subscribe((file) => file);
         this.toastr.success(`${file.fileName} is uploaded successfully!`);
         this.emitter.emit("files updated");
       }

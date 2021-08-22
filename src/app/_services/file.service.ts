@@ -1,9 +1,9 @@
 import { ALLOWED_FILE_TYPES, FILE_SIZE_LIMIT } from './../staticData';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { EventEmitter, Injectable, Output } from '@angular/core';
-import { of, Observable } from 'rxjs';
+import { of, Observable, Subscription } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { File } from '../_models/file.model';
 
 @Injectable({
@@ -24,38 +24,44 @@ export class FileService {
 
   getAllFiles(): Observable<File[]> {
     if (this.files.length > 0) return of(this.files);
-    return this.http.get<File[]>(this.baseUrl + 'api/fileItems').pipe(
-      map(files => {
-        this.files = files;
-        return files;
-      })
-    );
+    return this.http.get<File[]>(environment.apiUrl + 'api/fileItems');
   }
 
-  getFilesByType(type: string): Observable<File[]> {
-    if (this.files.length > 0) return of(this.files);
-    return this.http.get<File[]>(this.baseUrl + 'api/fileItems').pipe(
-      map(files => {
-        const currentSelectedFiles = files.filter(file => file.fileType === type);
-        this.files = currentSelectedFiles;
-        return currentSelectedFiles;
-      })
-    );
+  // getFilesByType(type: string): Observable<File[]> {
+  //   if (this.files.length > 0) return of(this.files);
+  //   return this.http.get<File[]>(this.baseUrl + 'api/fileItems').pipe(
+  //     map(files => {
+  //       const currentSelectedFiles = files.filter(file => file.fileType === type);
+  //       this.files = currentSelectedFiles;
+  //       return currentSelectedFiles;
+  //     })
+  //   );
+  // }
+
+  public postFile = (file: File): Observable<File> => {
+    return this.http.post<File>(environment.apiUrl + 'api/fileItems', file);
   }
 
-  public postFile = (file: File): void => {
-    this.http.post(environment.apiUrl + 'api/fileItems', file)
-        .subscribe(res => {
-          res
-        }
-    );
-  }
+  // addEmployee(emp: Employee): Observable<Employee> {
+  //   return this.http.post<Employee>(this.empUrl, emp, httpOptions)
+  //     .pipe(
+  //       tap(employee => console.log("employee: " + JSON.stringify(employee))),
+  //       catchError(this.handleError(emp))
+  //     );
+  // }
 
-  public isSizeLimitExceeded(fileSize) {
-    return fileSize > this.FILE_SIZE_LIMIT;
-  }
+  // public postFile = (file: File): Observable<File> => {
+  //   return this.http.post<File>(environment.apiUrl + 'api/fileItems', file)
+  //     .subscribe(res => {
+  //       res
+  //     });
+  // }
 
-  public isFileTypeAllowed(fileType) {
-    return this.ALLOWED_FILE_TYPES.includes(fileType);
-  }
+  // public isSizeLimitExceeded(fileSize) {
+  //   return fileSize > this.FILE_SIZE_LIMIT;
+  // }
+
+  // public isFileTypeAllowed(fileType) {
+  //   return this.ALLOWED_FILE_TYPES.includes(fileType);
+  // }
 }

@@ -1,3 +1,4 @@
+import { FileService } from 'src/app/_services/file.service';
 import { File } from './_models/file.model';
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -11,7 +12,7 @@ import { environment } from '../environments/environment';
 export class AppComponent implements OnInit {
   public files: File[] = [];
 
-  constructor(private http: HttpClient){
+  constructor(private fileService: FileService){
   }
 
   ngOnInit(){
@@ -19,14 +20,14 @@ export class AppComponent implements OnInit {
   }
 
   private loadFiles = () => {
-    this.http.get(environment.apiUrl + 'api/fileItems')
+    this.fileService.getAllFiles()
     .subscribe(res => {
       this.files = res as File[];
     });
   }
 
   public updateFiles = (event) => {
-    this.http.get(environment.apiUrl + 'api/fileItems')
+    this.fileService.getAllFiles()
     .subscribe(res => {
       this.files = res as File[];
     });
